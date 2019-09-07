@@ -1,0 +1,47 @@
+// media query
+$xs: 576px;
+$sm: 768px;
+$md: 992px;
+$lg: 1200px;
+
+// main
+$font-size: 1.6rem;
+$margin: 15px;
+$bg: #F5F7FA;
+$primary:#1890ff;
+$red: #f5222d;
+$dark: #2C393F;
+
+$z-index: ( //
+    header: 900,
+    aside: 910,
+);
+
+$gradient: ( //
+    header: linear-gradient(to right, #1890ff, #26C6DA),
+    quick-stats-1: linear-gradient(to bottom right, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%),
+    quick-stats-2: linear-gradient(to bottom right, #45D4FB 0%, #57E9F2 50%, #9EFBD3 100%),
+    quick-stats-3: linear-gradient(to bottom right, #ef629f, #eecda3),
+    quick-stats-4: linear-gradient(to bottom right, #acb6e5, #86fde8),
+);
+
+$shadow: ( //
+    header: 0 4px 20px -4px rgba(0, 0, 0, 0.1),
+    aside: 5px 0 10px 0 rgba(0, 0, 0, 0.03),
+    col: 0 2px 3px 0 rgba(0, 0, 0, 0.05),
+);
+
+// col
+$col-radius: 4px;
+$col-bg: #FFFFFF;
+
+// header 
+$header-hight: 60px;
+$header-search-width: 250px;
+
+// footer 
+$footer-hight: 35px;
+
+// aside
+$aside-width: 250px;
+$aside-bg: #FFFFFF;

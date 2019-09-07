@@ -1,0 +1,21 @@
+.p-form {
+    display: flex;
+    flex-wrap: wrap;
+
+    .ant-form-item {
+        margin-bottom: $margin;
+
+        .ant-col {
+            padding: 0;
+        }
+
+        .ant-form-item-label {
+            line-height: 3rem;
+        }
+
+        &.form-item-submit {
+            text-align: right;
+            margin-bottom: 5px;
+        }
+    }
+}

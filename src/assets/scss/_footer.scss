@@ -1,0 +1,8 @@
+.p-footer {
+    @include box(100%, $footer-hight);
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+}

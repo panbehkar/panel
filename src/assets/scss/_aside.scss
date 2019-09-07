@@ -1,0 +1,42 @@
+.p-aside {
+    @include box($aside-width, 100vh);
+    @include position(fixed, 0, auto, auto, -#{$aside-width + 10});
+    background-color: $aside-bg;
+    box-shadow: shadow(aside);
+    z-index: z-index(aside);
+    @include transition(left);
+
+    &.open {
+        left: 0;
+    }
+
+    @include mQ($md) {
+        height: calc(100vh - #{$header-hight});
+        top: $header-hight;
+    }
+}
+
+.p-aside-user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+
+    h4 {
+        margin-top: 10px;
+    }
+}
+
+.p-aside-menu {
+    border: 0;
+
+    .aside-menu-item {
+        span {
+            margin: 0 6px;
+        }
+
+        i {
+            font-size: 1.8rem;
+        }
+    }
+}

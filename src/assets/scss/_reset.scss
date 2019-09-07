@@ -1,0 +1,86 @@
+html {
+    height: inherit !important;
+    font-size: 62.5%;
+}
+
+body {
+    font-size: $font-size;
+    font-weight: 500;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 0;
+}
+
+h1 {
+    font-size: 3.2rem;
+}
+
+h2 {
+    font-size: 2.4rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+h4 {
+    font-size: 1.6rem;
+}
+
+h5 {
+    font-size: 1.4rem;
+}
+
+h6 {
+    font-size: 1.2rem;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 0 !important;
+}
+
+button,
+input,
+textarea,
+select,
+option {
+    outline: none !important;
+}
+
+label {
+    cursor: inherit;
+}
+
+a {
+    @include transition(color);
+
+    &:hover {
+        text-decoration: none;
+        color: $primary;
+    }
+}
+
+p {
+    margin-bottom: 0;
+}
+
+i {
+    font-style: normal;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+label {
+    margin-bottom: 0;
+}

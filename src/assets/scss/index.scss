@@ -1,0 +1,91 @@
+@import url(../css/fontawesome.min.css);
+@import url(../css/antd.min.css);
+@import "functions";
+@import "variables";
+@import "mixins";
+@import "reset";
+@import "forms";
+@import "header";
+@import "footer";
+@import "aside";
+@import "home";
+@import "list";
+
+// @include box(200px, 100px);
+// @include box(50px);
+// @include rgba(bg, white, 0.8);
+// @include rgba(color, black, 0.5);
+// @include position(absolute, 0, 0, auto, auto);
+// @include position(fixed, 0, 0, auto, auto);
+// @include placeholder(#cccccc);
+// @include transition(width);
+// @include transition(height, 0.25s, ease-in-out);
+// background-image: gradient(header);
+// box-shadow: shadow(header);
+// z-index: z-index(header);
+
+// #region main
+.p-container {
+    @include box(100%, auto);
+    position: relative;
+    overflow: hidden;
+}
+
+.p-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    margin-left: 0;
+    background-color: $bg;
+    display: flex;
+    flex-direction: column;
+    @include transition(margin-left);
+
+    &.push {
+        margin-left: $aside-width;
+
+        @include mQ($md) {
+            margin-left: 0;
+        }
+    }
+}
+
+.p-content {
+    flex-grow: 1;
+    margin-top: $header-hight;
+    padding: 0 $margin;
+}
+
+.p-loading {
+    @include box(100vw, calc(100vh - #{$header-hight}));
+    @include position(fixed, auto, auto, auto, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include rgba(bg, white, 1);
+    @include transition(left);
+    @include transition(width);
+
+    &.push {
+        left: $aside-width;
+        width: calc(100vw - #{$aside-width});
+    }
+}
+
+.ant-row-flex {
+    padding: 0;
+    margin: $margin 0;
+}
+
+.ant-col {
+    padding: 0 $margin;
+}
+
+.p-col {
+    padding: $margin;
+    margin: $margin 0;
+    background-color: $col-bg;
+    border-radius: $col-radius;
+    box-shadow: shadow(col);
+}
+
+// #endregion
