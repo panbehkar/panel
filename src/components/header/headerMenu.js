@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Avatar, Badge, Menu, Dropdown, Icon, Empty } from 'antd';
-import imgSrc from '../assets/images/favicon.png'
+import imgSrc from '../../assets/images/favicon.png'
 class HeaderMenu extends Component {
     state = {
         notifData: [

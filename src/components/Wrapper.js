@@ -3,13 +3,12 @@ import Routes from "../utils/routes";
 import Header from "./header/header";
 import Content from "./content";
 import Footer from "./footer/footer";
-import { SideContext } from '../context/sideContext';
+import { SideContext } from '../contexts/sideContext';
 
 const Wrapper = () => {
-    const [{ sideMenuOpen }] = useContext(SideContext);
-    // const { sideMenuOpen } = side;
+    const { sideOpen } = useContext(SideContext);
     return (
-        <section className={`p-wrapper${sideMenuOpen ? ' push' : ''}`}>
+        <section className={`p-wrapper${sideOpen ? ' push' : ''}`}>
             <Header />
             <Content>
                 <Routes />

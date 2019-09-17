@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Spin, Icon } from 'antd';
+import { SideContext } from '../../contexts/sideContext';
 
-const Loading = ({ sideMenuOpen }) => {
+const Loading = () => {
+    const { sideOpen } = useContext(SideContext);
     const spinIcon = <Icon type="loading" style={{ fontSize: '5rem' }} spin />;
     return (
-        <div className={`p-loading${sideMenuOpen ? ' push' : ''}`}>
+        <div className={`p-loading${sideOpen ? ' push' : ''}`}>
             <Spin indicator={spinIcon} />
         </div>
     );

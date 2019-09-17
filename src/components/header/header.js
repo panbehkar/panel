@@ -1,16 +1,12 @@
 import React, { useContext } from "react";
 import HeaderMenu from "./headerMenu";
-import { SideContext } from '../../context/sideContext';
+import { SideContext } from '../../contexts/sideContext';
 
 const Header = () => {
-    const [{ sideMenuOpen }, setSide] = useContext(SideContext);
-    // const { sideMenuOpen } = side;
-    const sideMenuToggle = () => {
-        setSide({ sideMenuOpen: !sideMenuOpen })
-    }
+    const { sideOpen, sideToggle } = useContext(SideContext);
     return (
-        <header className={`p-header${sideMenuOpen ? ' push' : ''}`}>
-            <a href="#!" className={`hamburger-icon${sideMenuOpen ? ' open' : ''}`} onClick={sideMenuToggle}>
+        <header className={`p-header${sideOpen ? ' push' : ''}`}>
+            <a href="#!" className={`hamburger-icon${sideOpen ? ' open' : ''}`} onClick={sideToggle}>
                 <span className="hamburger-inner"></span>
             </a>
             <form className="p-header-search">

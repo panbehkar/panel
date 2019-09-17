@@ -1,13 +1,12 @@
 import React, { useContext } from 'react';
 import SideUser from './sideUser';
 import SideMenu from './sideMenu';
-import { SideContext } from '../../context/sideContext';
+import { SideContext } from '../../contexts/sideContext';
 
 const Side = () => {
-    const [{ sideMenuOpen }] = useContext(SideContext);
-    // const { sideMenuOpen } = side;
+    const { sideOpen } = useContext(SideContext);
     return (
-        <aside className={`p-aside${sideMenuOpen ? ' open' : ''}`}>
+        <aside className={`p-aside${sideOpen ? ' open' : ''}`}>
             <SideUser />
             <SideMenu />
         </aside >

@@ -1,17 +1,16 @@
 import React from 'react';
-import Main from './main';
-import Side from "./Side";
+import Side from "./side/side";
 import Wrapper from './wrapper';
-import { SideProvider } from '../context/sideContext';
+import { SideProvider } from '../contexts/sideContext';
 
 const App = () => {
     return (
-        <SideProvider>
-            <Main>
+        <main className="p-container">
+            <SideProvider>
                 <Side />
                 <Wrapper />
-            </Main>
-        </SideProvider>
+            </SideProvider>
+        </main>
     );
 }
 
