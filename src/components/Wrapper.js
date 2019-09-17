@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import Routes from "../utils/routes";
-import Header from "./Header";
-import Content from "./Content";
-import Footer from "./Footer";
+import Header from "./header/header";
+import Content from "./content";
+import Footer from "./footer/footer";
 import { SideContext } from '../context/sideContext';
 
 const Wrapper = () => {

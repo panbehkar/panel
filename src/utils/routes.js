@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Switch, Route } from "react-router-dom";
-import Home from "../pages/Home";
-import List from "../pages/List";
-import Form from "../pages/Form";
+import Home from "../components/home/home";
+import List from "../components/list/list";
+import Form from "../components/form/form";
 
 class Routes extends Component {
     render() {

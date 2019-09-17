@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col, Table } from 'antd';
-import Loading from '../components/Loading';
+import Loading from '../common/loading';
 
 class List extends Component {
     constructor(props) {

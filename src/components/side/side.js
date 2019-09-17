@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import SideUser from './SideUser';
-import SideMenu from './SideMenu';
-import { SideContext } from '../context/sideContext';
+import SideUser from './sideUser';
+import SideMenu from './sideMenu';
+import { SideContext } from '../../context/sideContext';
 
 const Side = () => {
     const [{ sideMenuOpen }] = useContext(SideContext);

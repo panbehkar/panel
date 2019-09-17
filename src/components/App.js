@@ -1,7 +1,7 @@
 import React from 'react';
-import Main from './Main';
+import Main from './main';
 import Side from "./Side";
-import Wrapper from './Wrapper';
+import Wrapper from './wrapper';
 import { SideProvider } from '../context/sideContext';
 
 const App = () => {

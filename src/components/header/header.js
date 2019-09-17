@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import HeaderMenu from "./HeaderMenu";
-import { SideContext } from '../context/sideContext';
+import HeaderMenu from "./headerMenu";
+import { SideContext } from '../../context/sideContext';
 
 const Header = () => {
     const [{ sideMenuOpen }, setSide] = useContext(SideContext);

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Row, Col } from 'antd';
-import Loading from '../components/Loading';
-import FormOne from '../components/FromOne';
+import Loading from '../common/loading';
+import FormOne from './formOne';
 
 class Form extends Component {
     constructor(props) {
