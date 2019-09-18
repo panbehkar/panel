@@ -3,10 +3,10 @@ import HeaderMenu from "./headerMenu";
 import { SideContext } from '../../contexts/sideContext';
 
 const Header = () => {
-    const { sideOpen, sideToggle } = useContext(SideContext);
+    const { sideOpen, dispatch } = useContext(SideContext);
     return (
         <header className={`p-header${sideOpen ? ' push' : ''}`}>
-            <a href="#!" className={`hamburger-icon${sideOpen ? ' open' : ''}`} onClick={sideToggle}>
+            <a href="#!" className={`hamburger-icon${sideOpen ? ' open' : ''}`} onClick={() => dispatch({ type: 'SIDE_TOGGLE' })}>
                 <span className="hamburger-inner"></span>
             </a>
             <form className="p-header-search">

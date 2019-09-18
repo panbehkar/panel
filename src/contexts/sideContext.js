@@ -1,14 +1,12 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useReducer } from 'react';
+import { sideReducer } from '../reducers/sideReducer';
 
 export const SideContext = createContext();
 
 export const SideProvider = ({ children }) => {
-    const [sideOpen, setSideOpen] = useState(false);
-    const sideToggle = () => {
-        setSideOpen(!sideOpen);
-    };
+    const [sideOpen, dispatch] = useReducer(sideReducer, false);
     return (
-        <SideContext.Provider value={{ sideOpen, sideToggle }}>
+        <SideContext.Provider value={{ sideOpen, dispatch }}>
             {children}
         </SideContext.Provider>
     );
