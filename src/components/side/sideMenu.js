@@ -30,7 +30,7 @@ class SideMenu extends Component {
                 onOpenChange={this.onOpenChange}
             >
                 <Menu.Item key="1" className="aside-menu-item">
-                    <Link to="/">
+                    <Link to="/dashboard">
                         <i className="far fa-tachometer-alt-slow"></i>
                         <span>Dashboard</span>
                     </Link>
@@ -46,13 +46,13 @@ class SideMenu extends Component {
                     }
                 >
                     <Menu.Item key="2-1">
-                        <Link to="/">Home</Link>
+                        <Link to="/dashboard">Home</Link>
                     </Menu.Item>
                     <Menu.Item key="2-2">
-                        <Link to="/list">List</Link>
+                        <Link to="/dashboard/list">List</Link>
                     </Menu.Item>
                     <Menu.Item key="2-3">
-                        <Link to="/form">Form</Link>
+                        <Link to="/dashboard/form">Form</Link>
                     </Menu.Item>
                 </SubMenu>
                 <SubMenu
@@ -66,13 +66,13 @@ class SideMenu extends Component {
                     }
                 >
                     <Menu.Item key="3-1">
-                        <Link to="/">Home</Link>
+                        <Link to="/dashboard">Home</Link>
                     </Menu.Item>
                     <Menu.Item key="3-2">
-                        <Link to="/list">List</Link>
+                        <Link to="/dashboard/list">List</Link>
                     </Menu.Item>
                     <Menu.Item key="3-3">
-                        <Link to="/form">Form</Link>
+                        <Link to="/dashboard/form">Form</Link>
                     </Menu.Item>
                 </SubMenu>
                 <SubMenu
@@ -86,13 +86,13 @@ class SideMenu extends Component {
                     }
                 >
                     <Menu.Item key="4-1">
-                        <Link to="/">Home</Link>
+                        <Link to="/dashboard">Home</Link>
                     </Menu.Item>
                     <Menu.Item key="4-2">
-                        <Link to="/list">List</Link>
+                        <Link to="/dashboard/list">List</Link>
                     </Menu.Item>
                     <Menu.Item key="4-3">
-                        <Link to="/form">Form</Link>
+                        <Link to="/dashboard/form">Form</Link>
                     </Menu.Item>
                 </SubMenu>
             </Menu>

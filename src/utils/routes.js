@@ -1,19 +1,31 @@
-import React, { Component } from 'react';
-import { Switch, Route } from "react-router-dom";
+import React from 'react';
+import { Switch, Route, Redirect } from "react-router-dom";
+import Dashboard from "../components/dashboard";
+import Login from "../components/login/login";
+import NotFound from '../components/notFound';
+
 import Home from "../components/home/home";
 import List from "../components/list/list";
 import Form from "../components/form/form";
 
-class Routes extends Component {
-    render() {
-        return (
-            <Switch>
-                <Route exact path="/" component={Home} />
-                <Route path="/list" component={List} />
-                <Route path="/form" component={Form} />
-            </Switch>
-        );
-    }
-}
+export const MainRoutes = () => {
+    return (
+        <Switch>
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/login" component={Login} />
+            <Route path="/not-found" component={NotFound}></Route>
+            <Redirect from="/" exact to="/dashboard" />
+            <Redirect to="/not-found" />
+        </Switch>
+    );
+};
 
-export default Routes;
+export const ContentRoutes = () => {
+    return (
+        <Switch>
+            <Route exact path="/dashboard" component={Home} />
+            <Route path="/dashboard/list" component={List} />
+            <Route path="/dashboard/form" component={Form} />
+        </Switch>
+    );
+};

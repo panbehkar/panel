@@ -19,3 +19,15 @@
         }
     }
 }
+
+.login-form-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .login-form {
+        width: 300px;
+        flex-direction: column;
+    }
+}

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import { Avatar, Badge, Menu, Dropdown, Icon, Empty } from 'antd';
 import imgSrc from '../../assets/images/favicon.png'
 class HeaderMenu extends Component {
@@ -54,10 +55,10 @@ class HeaderMenu extends Component {
                 </Menu.Item>
                 <Menu.Divider />
                 <Menu.Item key="3">
-                    <a href="#logout">
+                    <Link to="/login">
                         <Icon type="logout" />
                         <span>Logout</span>
-                    </a>
+                    </Link>
                 </Menu.Item>
             </Menu>
         );

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Routes from "../utils/routes";
+import { ContentRoutes } from "../utils/routes";
 import Header from "./header/header";
 import Content from "./content";
 import Footer from "./footer/footer";
@@ -11,7 +11,7 @@ const Wrapper = () => {
         <section className={`p-wrapper${sideOpen ? ' push' : ''}`}>
             <Header />
             <Content>
-                <Routes />
+                <ContentRoutes />
             </Content>
             <Footer />
         </section>

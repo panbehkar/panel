@@ -1,15 +1,10 @@
 import React from 'react';
-import Side from "./side/side";
-import Wrapper from './wrapper';
-import { SideProvider } from '../contexts/sideContext';
+import { MainRoutes } from "../utils/routes";
 
 const App = () => {
     return (
         <main className="p-container">
-            <SideProvider>
-                <Side />
-                <Wrapper />
-            </SideProvider>
+            <MainRoutes />
         </main>
     );
 }
