@@ -1,4 +1,4 @@
-export const sideReducer = (state, action) => {
+const SideReducer = (state, action) => {
     switch (action.type) {
         case 'SIDE_TOGGLE':
             return !state;
@@ -6,3 +6,5 @@ export const sideReducer = (state, action) => {
             return state;
     };
 };
+
+export default SideReducer;
