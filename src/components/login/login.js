@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
 import { AuthContext } from '../../contexts/authContext';
 
 const Login = (props) => {
@@ -15,12 +15,23 @@ const Login = (props) => {
                 if (enteredUserPass.username === realUserPass.username && enteredUserPass.password === realUserPass.password) {
                     dispatch({ type: 'LOGIN_SUCCESS', user: enteredUserPass });
                     window.localStorage.setItem('auth', true);
-                    props.history.replace('/dashboard');
+                    message.loading('Please wait..', 0.5)
+                        .then(() => {
+                            message.destroy();
+                        }).then(() => {
+                            message.success('You are logged in', 1);
+                        })
+                        .then(() => props.history.replace('/dashboard'));
                 }
                 else {
                     dispatch({ type: 'LOGIN_ERROR' })
                     window.localStorage.setItem('auth', false);
-                    window.alert('Username or Password is incorrect!');
+                    message.loading('Please wait..', 0.5)
+                        .then(() => {
+                            message.destroy();
+                        }).then(() => {
+                            message.error('Your username or password is incorrect!', 2);
+                        });
                 }
             };
         });

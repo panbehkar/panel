@@ -4,6 +4,8 @@ const AuthReducer = (state, action) => {
             return { isAuthenticated: true, user: action.user };
         case 'LOGIN_ERROR':
             return state;
+        case 'LOGOUT_SUCCESS':
+            return { isAuthenticated: false, user: action.user };
         default:
             return state;
     };
