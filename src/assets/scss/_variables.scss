@@ -23,12 +23,14 @@ $gradient: ( //
     quick-stats-2: linear-gradient(to bottom right, #45D4FB 0%, #57E9F2 50%, #9EFBD3 100%),
     quick-stats-3: linear-gradient(to bottom right, #ef629f, #eecda3),
     quick-stats-4: linear-gradient(to bottom right, #acb6e5, #86fde8),
+    login: linear-gradient(135deg, #2AFADF 10%, #4C83FF 100%),
 );
 
 $shadow: ( //
     header: 0 4px 20px -4px rgba(0, 0, 0, 0.1),
     aside: 5px 0 10px 0 rgba(0, 0, 0, 0.03),
     col: 0 2px 3px 0 rgba(0, 0, 0, 0.05),
+    login: 5px 5px 10px 0 rgba(0, 0, 0, 0.1),
 );
 
 // col
@@ -45,3 +47,7 @@ $footer-hight: 35px;
 // aside
 $aside-width: 250px;
 $aside-bg: #FFFFFF;
+
+// login 
+$login-width: 420px;
+$login-padding: 60px;

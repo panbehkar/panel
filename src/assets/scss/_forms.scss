@@ -14,8 +14,7 @@
         }
 
         &.form-item-submit {
-            text-align: right;
-            margin-bottom: 5px;
+            margin-bottom: 0;
         }
     }
 }
@@ -25,9 +24,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: gradient(login);
 
     .login-form {
-        width: 300px;
+        width: $login-width;
         flex-direction: column;
+        background-color: white;
+        box-shadow: shadow(login);
+        padding: $login-padding;
+        border-radius: $col-radius;
     }
 }

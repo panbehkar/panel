@@ -61,7 +61,7 @@ const Login = (props) => {
                         />,
                     )}
                 </Form.Item>
-                <Form.Item>
+                <Form.Item className="form-item-submit">
                     {getFieldDecorator('remember', {
                         valuePropName: 'checked',
                         initialValue: false,
