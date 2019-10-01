@@ -1,109 +1,95 @@
-import React, { Component } from "react";
+import React, { Fragment, useState, useContext, useEffect } from "react";
 import { Row, Col, Table } from 'antd';
+import axios from 'axios';
 import Loading from '../common/loading';
+import { ListContext } from '../../contexts/listContext';
 
-class List extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isLoading: true
+const List = () => {
+    const [loading, setLoading] = useState(true);
+    const { list, dispatch } = useContext(ListContext);
+    const { data: listData } = list;
+    useEffect(() => {
+        let didCancel = false;
+        let url = 'https://jsonplaceholder.typicode.com/posts';
+
+        const fetchData = async () => {
+            dispatch({ type: 'FETCH_INIT' });
+            try {
+                const result = await axios(url);
+                if (!didCancel) {
+                    dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
+                    setLoading(false);
+                }
+            } catch (error) {
+                if (!didCancel) {
+                    dispatch({ type: 'FETCH_FAILURE' });
+                }
+            }
+        };
+        fetchData();
+
+        return () => { didCancel = true; };
+    }, [dispatch]);
+
+    const columns = [
+        {
+            title: 'Title',
+            dataIndex: 'title',
+            className: 'list-column-title',
+            render: text => <a href='#title'>{text}</a>,
+        },
+        {
+            title: 'Platform',
+            dataIndex: 'platform',
+        },
+        {
+            title: 'Date',
+            dataIndex: 'date',
+        },
+        {
+            title: 'Actions',
+            dataIndex: 'actions',
+            className: 'list-column-actions',
+            render: (text, record) => (
+                <span>
+                    <a href='#edit'>
+                        <i className='fal fa-pencil'></i>
+                    </a>
+                    <a href='#delete'>
+                        <i className='fal fa-trash'></i>
+                    </a>
+                </span>
+            ),
+        },
+    ];
+
+    const rowSelection = {
+        onChange: (selectedRowKeys, selectedRows) => {
+            console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
         }
     };
 
-    componentDidMount() {
-        this.timeOut = setTimeout(() => {
-            this.setState({
-                isLoading: false
-            })
-        }, 500)
-    };
-
-    componentWillUnmount() {
-        clearTimeout(this.timeOut);
-    };
-
-    render() {
-        const columns = [
-            {
-                title: 'Title',
-                dataIndex: 'title',
-                className: 'list-column-title',
-                render: text => <a href='#title'>{text}</a>,
-            },
-            {
-                title: 'Platform',
-                dataIndex: 'platform',
-            },
-            {
-                title: 'Date',
-                dataIndex: 'date',
-            },
-            {
-                title: 'Actions',
-                dataIndex: 'actions',
-                className: 'list-column-actions',
-                render: (text, record) => (
-                    <span>
-                        <a href='#edit'>
-                            <i className='fal fa-pencil'></i>
-                        </a>
-                        <a href='#delete'>
-                            <i className='fal fa-trash'></i>
-                        </a>
-                    </span>
-                ),
-            },
-        ];
-
-        const data = [
-            {
-                key: '1',
-                title: 'Test post number 1',
-                platform: 'iOS',
-                date: '01/03/98',
-            },
-            {
-                key: '2',
-                title: 'Test post number 2',
-                platform: 'iOS',
-                date: '02/03/98',
-            },
-            {
-                key: '3',
-                title: 'Test post number 3',
-                platform: 'iOS',
-                date: '03/03/98',
-            },
-            {
-                key: '4',
-                title: 'Test post number 4',
-                platform: 'iOS',
-                date: '04/03/98',
+    return (
+        <Fragment>
+            {loading ?
+                <Loading /> :
+                <Row type="flex">
+                    <Col xs={24} sm={24} lg={24}>
+                        <div className="p-col">
+                            <Table
+                                className="p-list"
+                                bordered
+                                rowSelection={rowSelection}
+                                columns={columns}
+                                dataSource={listData}
+                                rowKey={record => record.id}
+                            />
+                        </div>
+                    </Col>
+                </Row>
             }
-        ];
-
-        const rowSelection = {
-            onChange: (selectedRowKeys, selectedRows) => {
-                console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-            }
-        };
-
-        return (
-            <React.Fragment>
-                {this.state.isLoading ?
-                    <Loading /> :
-                    <Row type="flex">
-                        <Col xs={24} sm={24} lg={24}>
-                            <div className="p-col">
-                                <Table className="p-list" bordered rowSelection={rowSelection} columns={columns} dataSource={data} />
-                            </div>
-                        </Col>
-                    </Row>
-                }
-
-            </React.Fragment>
-        );
-    }
-}
+        </Fragment>
+    );
+};
 
 export default List;

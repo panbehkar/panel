@@ -10,7 +10,7 @@ const authInitial = {
         password: '',
         remember: false
     }
-}
+};
 
 export const AuthProvider = ({ children }) => {
     const [auth, dispatch] = useReducer(AuthReducer, authInitial);

@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
+// import React, { useContext } from 'react';
+// import { AuthContext } from '../contexts/authContext';
 import { Switch, Route, Redirect } from "react-router-dom";
-import { AuthContext } from '../contexts/authContext';
 import Dashboard from "../components/dashboard";
 import Login from "../components/login/login";
 import NotFound from '../components/notFound';
@@ -10,25 +11,25 @@ import List from "../components/list/list";
 import Form from "../components/form/form";
 
 export const MainRoutes = () => {
-    const { auth } = useContext(AuthContext);
-    if (!auth.isAuthenticated) {
-        return (
-            <Switch>
-                <Route path="/login" component={Login} />
-                <Redirect from="/" to="/login" />
-            </Switch>
-        )
-    } else {
-        return (
-            <Switch>
-                <Route path="/dashboard" component={Dashboard} />
-                <Route path="/login" component={Login} />
-                <Route path="/not-found" component={NotFound}></Route>
-                <Redirect from="/" exact to="/dashboard" />
-                <Redirect to="/not-found" />
-            </Switch>
-        );
-    }
+    // const { auth } = useContext(AuthContext);
+    // if (!auth.isAuthenticated) {
+    //     return (
+    //         <Switch>
+    //             <Route path="/login" component={Login} />
+    //             <Redirect from="/" to="/login" />
+    //         </Switch>
+    //     )
+    // } else {
+    return (
+        <Switch>
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/login" component={Login} />
+            <Route path="/not-found" component={NotFound}></Route>
+            <Redirect from="/" exact to="/dashboard" />
+            <Redirect to="/not-found" />
+        </Switch>
+    );
+    // };
 };
 
 export const ContentRoutes = () => {

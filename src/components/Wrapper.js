@@ -4,6 +4,7 @@ import Header from "./header/header";
 import Content from "./content";
 import Footer from "./footer/footer";
 import { SideContext } from '../contexts/sideContext';
+import { ListProvider } from '../contexts/listContext'
 
 const Wrapper = () => {
     const { sideOpen } = useContext(SideContext);
@@ -11,7 +12,9 @@ const Wrapper = () => {
         <section className={`p-wrapper${sideOpen ? ' push' : ''}`}>
             <Header />
             <Content>
-                <ContentRoutes />
+                <ListProvider>
+                    <ContentRoutes />
+                </ListProvider>
             </Content>
             <Footer />
         </section>
