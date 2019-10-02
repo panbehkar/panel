@@ -1,16 +1,15 @@
-import React, { Fragment, useState, useContext, useEffect } from "react";
-import { Row, Col, Table } from 'antd';
+import React, { Fragment, useContext, useEffect, useRef } from "react";
+import { Row, Col, Table, Input, Button, Icon, Result } from 'antd';
 import axios from 'axios';
 import Loading from '../common/loading';
 import { ListContext } from '../../contexts/listContext';
 
-const List = () => {
-    const [loading, setLoading] = useState(true);
+const List = ({ history }) => {
     const { list, dispatch } = useContext(ListContext);
-    const { data: listData } = list;
+    const { isLoading, isError, data: listData } = list;
     useEffect(() => {
         let didCancel = false;
-        let url = 'https://jsonplaceholder.typicode.com/posts';
+        const url = 'https://jsonplaceholder.typicode.com/comments';
 
         const fetchData = async () => {
             dispatch({ type: 'FETCH_INIT' });
@@ -18,7 +17,6 @@ const List = () => {
                 const result = await axios(url);
                 if (!didCancel) {
                     dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
-                    setLoading(false);
                 }
             } catch (error) {
                 if (!didCancel) {
@@ -31,20 +29,64 @@ const List = () => {
         return () => { didCancel = true; };
     }, [dispatch]);
 
+    const inputEl = useRef();
+
+    const getColumnSearchProps = dataIndex => ({
+        filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
+            <div style={{ padding: 8 }}>
+                <Input
+                    ref={inputEl}
+                    placeholder={`Search ${dataIndex}`}
+                    value={selectedKeys[0]}
+                    onChange={e => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+                    onPressEnter={() => confirm()}
+                    style={{ width: 188, marginBottom: 8, display: 'block' }}
+                />
+                <Button
+                    type="primary"
+                    onClick={() => confirm()}
+                    icon="search"
+                    size="small"
+                    style={{ width: 90, marginRight: 8 }}
+                >
+                    Search
+            </Button>
+                <Button onClick={() => clearFilters()} size="small" style={{ width: 90 }}>
+                    Reset
+            </Button>
+            </div>
+        ),
+        filterIcon: filtered => (
+            <Icon type="search" style={{ color: filtered ? '#1890ff' : undefined }} />
+        ),
+        onFilter: (value, record) =>
+            record[dataIndex]
+                .toString()
+                .toLowerCase()
+                .includes(value.toLowerCase()),
+        onFilterDropdownVisibleChange: visible => {
+            if (visible) {
+                setTimeout(() => inputEl.current.focus());
+            }
+        }
+    });
+
     const columns = [
         {
-            title: 'Title',
-            dataIndex: 'title',
+            title: 'Name',
+            dataIndex: 'name',
             className: 'list-column-title',
             render: text => <a href='#title'>{text}</a>,
+            ...getColumnSearchProps('name')
         },
         {
-            title: 'Platform',
-            dataIndex: 'platform',
+            title: 'Email',
+            dataIndex: 'email',
+            ...getColumnSearchProps('email')
         },
         {
-            title: 'Date',
-            dataIndex: 'date',
+            title: 'Body',
+            dataIndex: 'body',
         },
         {
             title: 'Actions',
@@ -69,21 +111,34 @@ const List = () => {
         }
     };
 
+    const handleResult = () => {
+        history.push('/dashboard');
+    };
+
     return (
         <Fragment>
-            {loading ?
+            {isLoading ?
                 <Loading /> :
                 <Row type="flex">
                     <Col xs={24} sm={24} lg={24}>
                         <div className="p-col">
-                            <Table
-                                className="p-list"
-                                bordered
-                                rowSelection={rowSelection}
-                                columns={columns}
-                                dataSource={listData}
-                                rowKey={record => record.id}
-                            />
+                            {isError ?
+                                <Result
+                                    className="p-result"
+                                    status="404"
+                                    title="404"
+                                    subTitle="Sorry, the connection between API and Server is broken."
+                                    extra={<Button type="primary" onClick={handleResult}>Back Home</Button>}
+                                /> :
+                                <Table
+                                    className="p-list"
+                                    bordered
+                                    rowSelection={rowSelection}
+                                    columns={columns}
+                                    dataSource={listData}
+                                    rowKey={record => record.id}
+                                />
+                            }
                         </div>
                     </Col>
                 </Row>

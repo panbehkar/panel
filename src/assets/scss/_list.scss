@@ -8,25 +8,31 @@
     }
 
     table .ant-table-tbody {
-        >tr>td {
-            white-space: nowrap;
-        }
+        // >tr>td {
+        //     white-space: nowrap;
+        // }
 
-        .list-column-title a {
-            color: $primary;
-        }
-
-        .list-column-actions a {
-            font-size: 1.8rem;
-            line-height: 1rem;
-            margin: 0 5px;
-
-            &:nth-child(1) {
+        .list-column-title {
+            a {
                 color: $primary;
             }
+        }
 
-            &:nth-child(2) {
-                color: $red;
+        .list-column-actions {
+            white-space: nowrap;
+
+            a {
+                font-size: 1.8rem;
+                line-height: 1rem;
+                margin: 0 5px;
+
+                &:nth-child(1) {
+                    color: $primary;
+                }
+
+                &:nth-child(2) {
+                    color: $red;
+                }
             }
         }
     }
